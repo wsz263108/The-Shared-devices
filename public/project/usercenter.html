@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会员中心</title>
+<link rel="stylesheet" href="/project/stylesheet/bootstrap.css">
+<script src="/project/stylesheet/jquery.min.js"></script>
+<script src="/project/stylesheet/popper.min.js"></script>
+<script src="/project/stylesheet/bootstrap.min.js"></script>
+<script src="../vue.js"></script>
+<script src="../ajax.js"></script>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+    .pad{
+    padding: 0;
+  }
+  .pob{
+    position: fixed;
+    bottom: 0px;
+  }
+  .co{
+    background-color: rgb(0 ,255 ,255);
+  }
+  .colo{
+    background-color: rgb(255,105, 180);
+  }
+  a:focus{
+    text-decoration: none;
+  }
+  a{
+    color: black;
+  }
+</style>
+<body>
+<div class="container" id="box">
+  <div class="row no-gutters py-5">
+    <div class="col-2 ">
+      <img class="w-75 rounded-circle " src="" alt="" >
+    </div>
+    <div class="col-10">
+        <h5 class="mb-1 text-dark">{{r.uname}}</h5>
+        <small class="mb-1 text-danger">未实名验证</small>
+    </div>
+    <div class="col-12 d-flex align-items-center">
+      <div class="co rounded w-35 mr-2 mt-4">
+        <p class="mb-1 ml-3 mt-2 text-white">余额</p>
+        <p class="mb-2 ml-3 text-white">￥{{r.money}}</p>
+      </div>
+      <div class="colo rounded w-35 mt-4">
+        <p class="mb-1 ml-3 mt-2 text-white">时间</p>
+        <p class="mb-2 ml-3 text-white">14：56</p>
+      </div>
+    </div>
+    <div class="col-12 row no-gutters mt-4">
+      <a class="col-1 d-flex align-items-center">
+        <img class="w-60 " src="/project/img/use-wal.png" alt="">
+      </a>
+      <a class="col-11" href="/project/onlick/qianbaochongzhi.html">钱包充值</a>
+    </div>
+    <div class="col-12 row no-gutters mt-2">
+      <a class="col-1 d-flex align-items-center">
+        <img class="w-60 " src="/project/img/use-equ.png" alt="">
+      </a>
+      <a class="col-11" href="/project/onlick/shebeibaoxiu.html">设备报修</a>
+    </div>
+    <div class="col-12 row no-gutters mt-2">
+      <a class="col-1 d-flex align-items-center">
+        <img class="w-60 " src="/project/img/use-rec.png" alt="">
+      </a>
+      <a class="col-11" href="javascript:;">使用记录</a>
+    </div>
+    <div class="col-12 row no-gutters mt-2">
+      <a class="col-1 d-flex align-items-center">
+        <img class="w-60 " src="/project/img/use-tell.png" alt="">
+      </a>
+      <a class="col-11" href="/project/onlick/kefudianhua.html">客服电话</a>
+    </div>
+  </div>
+</div>
+<div class="col-12 row no-gutters pad pob">
+  <a href="/project/login.html" class="col-6  d-flex flex-column align-items-center ">
+    <img class="w-15 mt-3" src="/project/img/login-home.png" alt="">
+    <p class="text-dark">首页</p>
+  </a>
+  <a href="#" class="col-6  d-flex flex-column align-items-center">
+    <img class="w-15 mt-3" src="/project/img/login-user.png" alt="">
+    <p class="text-dark">个人中心</p>
+  </a>
+</div>
+</body>
+</html>
+<script>
+
+        
+
+  ajax({
+      url:'/user/gern',
+      data:{
+          uid:window.sessionStorage.getItem('uid')
+      },
+      dataType:true,
+      proce:function(r){
+          console.log(r);
+          var vm=new Vue({
+              el:'#box',
+              data:{
+                  r:r
+              }
+  })
+          }
+  })
+
+
+</script>

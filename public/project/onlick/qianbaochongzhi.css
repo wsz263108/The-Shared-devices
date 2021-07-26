@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.title{
+    width: 100vw;
+    height: 14vw;
+    line-height: 14vw;
+    text-align: center;
+    font-weight: 900;
+    font-size: 6vw;
+    background-color: rgb(61, 80, 182);
+    color: white;
+}
+.box{
+    margin-top: 6vw;
+    padding: 0 10vw;
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.n1{
+    width: 80vw;
+    height: 20vw;
+    background-color: rgb(235, 231, 233);
+    border-radius: 5vw;
+    line-height: 20vw;
+    text-align: center;
+}
+.n1>:nth-child(1){
+    font-size: 5vw;
+}
+.n1>:nth-child(2){
+    color: rgb(91, 109, 211);
+    font-size: 6vw;
+    font-weight: 900;
+}
+.n2{
+    width: 80vw;
+    background-color: rgb(235, 231, 233);
+    border-radius: 5vw;
+    height: 50vw;
+    text-align: center;
+    margin: 10vw auto;
+}
+.n2>:nth-child(1){
+    font-size: 5vw;
+    padding-top: 4vw;
+}
+.n2>:nth-child(2){
+    padding: 0 10vw;
+    width: 60vw;
+    margin: 0 auto;
+    margin-top: 5vw;
+}
+.n2>:nth-child(2)>ul>li{
+    width: 20vw;
+    text-align: center;
+    margin: 1vw 0;
+}
+.n2>:nth-child(2)>ul>li>button{
+    width: 18vw;
+    height: 10vw;
+    border: none;
+    background-color: cadetblue;
+    color: white;
+    font-size: 4vw;
+    border-radius: 4vw;
+}
+.n3{
+    width: 40vw;
+    height: 12vw;
+    margin: 0 auto;
+}
+.n3>button{
+    width: 40vw;
+    height: 12vw;
+    border: none;
+    background-color: rgb(74, 132, 241);
+    border-radius: 5vw;
+    font-size: 5vw;
+    color: white;
+}

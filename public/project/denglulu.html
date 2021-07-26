@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./BootStrap/bootstrap.css">
+  <script src="./BootStrap/jquery.min.js"></script>
+  <script src="./BootStrap/popper.min.js"></script>
+  <script src="./BootStrap/bootstrap.min.js"></script>
+  <script src="./vue.js"></script>
+</head>
+<style>
+  input {
+    outline: none;
+  }
+
+  .font_size {
+    font-size: 25px;
+  }
+
+  .font_size2 {
+    font-size: 18px;
+  }
+  button{
+    border-radius: 50px;
+  }
+</style>
+<div class="container" id="box">
+  <div class="row no-gutters">
+    <div class="col-6 offset-3">
+      <img class="w-100 rounded-circle mt-5" src="./img/logo.jpg" alt="">
+    </div>
+    <div class="row no-gutters col-12 mt-5" >
+      <div class="col-8 offset-2 row no-gutters border-dark border-bottom  px-2 py-2">
+        <div class="col-1">
+          <img class="w-100" src="./img/phone.png" alt="">
+        </div>
+        <div class="col-11">
+          <input type="text" v-model="uname" id="in1" class="w-100 ml-1 border-0" placeholder="请输入用户名">
+        </div>
+      </div>
+      <div class="col-8 offset-2 row no-gutters border-dark border-bottom  px-2 py-2">
+        <div class="col-1">
+          <img class="w-100" src="./img/pass.png" alt="">
+        </div>
+        <div class="col-11">
+          <input type="password" v-model="pwd" id="in2" class="w-100 ml-1 border-0" placeholder="设置密码">
+        </div>
+      </div>
+      <div class="col-6 offset-3 mt-5">
+        <button class="w-100 btn btn-primary font_size" @click="login">登录</button>
+      </div>
+      <div class="col-6 d-flex justify-content-between offset-3 mt-2">
+        <a href="JavaScript:;"><span>忘记密码</span></a>
+        <span class="text-danger"><a href="./zhuce.html">点击注册</a></span>
+      </div>
+      <div class="col-8 offset-2 mt-5 text-dark text-center border-bottom border-dark">
+        第三方登录
+      </div>
+      <div class="col-8 offset-2 mt-3 row no-gutters">
+        <div class="col-2"><a href="./err.html"><img class="w-100 h-100" src="./img/qq.png" alt=""></a>
+        </div>
+        <div class="col-2 offset-3"><a href="./err.html"><img class="w-100 h-100" src="./img/xin.png"
+              alt=""></a></div>
+        <div class="col-2 offset-3"><a href="./err.html"><img class="w-100 h-100" src="./img/weibo.png"
+              alt=""></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+
+<script src="./ajax.js"></script>
+<scri>
+
+  var vm = new Vue({
+    el: "#box",
+    data: {
+      uname: '',
+      pwd: ''
+    },
+    
+    methods: {
+      login: function () {
+        let reg = /^[^\s]*$/;
+        if ((!(reg.test(this.uname)) || this.uname == '') || (!(reg.test(this.pwd)) || this.pwd == '')) {
+          alert('输入的账号或者密码为空或者包含空格')
+        } else {
+          ajax({
+            url: '/user/login',
+            data: {
+              uname: this.uname,
+              pwd: this.pwd
+            },
+            
+            dataType: true,
+            type: 'post',
+            proce: function (r) {
+              if (r == 0) {
+                alert('账号或密码错误');
+              } else {
+                console.log('有此账号');
+                window.sessionStorage.setItem('uid', r[0].id)
+                setTimeout(function () {
+                  self.location = '/project/login.html'
+                }, 1000)
+              }
+            }
+          })
+        }
+      }
+    },
+  })
+     </scri

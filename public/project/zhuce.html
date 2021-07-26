@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="./stylesheet/bootstrap.css">
+<script src="./stylesheet/jquery.min.js"></script>
+<script src="./stylesheet/popper.min.js"></script>
+<script src="./stylesheet/bootstrap.min.js"></script>
+<script src="../vue.js"></script>
+</head>
+<style>
+  input{
+    outline: no
+  }
+  .font_size{
+    font-size: 25px;
+  }
+  .font_size2{
+    font-size: 18px;
+  }
+</style>
+<body>
+<div class="container">
+  <div class="row no-gutters" id="box">
+    <div class="col-6 offset-3">
+      <img class="w-100 rounded-circle mt-5" src="./img/logo.jpg" alt="">
+    </div>
+    <div class="row no-gutters col-12 mt-5">
+      <div class="col-8 offset-2 row no-gutters border-dark border-bottom  px-2 py-2">
+        <div class="col-1">
+          <img class="w-100" src="./img/phone.png" alt="">
+        </div>
+        <div class="col-11">
+          <input type="text" id="in1" v-model="uname" class="w-100 ml-1 border-0" placeholder="请输入用户名">
+        </div>
+      </div>
+      <div class="col-8 offset-2 row no-gutters border-dark border-bottom  px-2 py-2">
+        <div class="col-1">
+          <img class="w-100" src="./img/pass.png" alt="">
+        </div>
+        <div class="col-11">
+          <input type="text" v-model="pwd" id="in2" class="w-100 ml-1 border-0" placeholder="设置密码">
+        </div>
+      </div>
+      <div class="col-6 offset-3 mt-5">
+        <button @click='login' class="w-100 btn btn-primary font_size">确认注册</button>
+      </div>
+      <div class="col-6 offset-3 mt-2 text-center">
+        <span class="text-danger font_size2"><a href="/project/denglu.html">登录</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="../ajax.js"></script>
+    <script>
+        var vm=new Vue({
+            el:'#box',
+            data:{
+                uname:'',
+                pwd:''
+            },
+            methods: {
+              fan:function(){
+                self.location='/project/denglu.html'
+              }
+                ,login:function(){
+                    let reg =/^[^\s]*$/;
+                    
+                    if((!(reg.test(this.uname)) || this.uname=='') || (!(reg.test(this.pwd)) || this.pwd=='')){
+                        alert('账号或者密码不能为空,不能包含空格')
+                    }else{
+                        ajax({
+                            url:'/user/zhuce',
+                            data:{
+                                uname:this.uname,
+                                pwd:this.pwd
+                            },
+                            type:'post',
+                            proce:function(r){
+                                if(r==0){
+                                    console.log('注册成功');
+                                    setTimeout(() => {
+                                        self.location='/project/denglulu.html'
+                                    }, 1000);
+
+                                }else{
+                                    alert('账号已被注册')
+                                }
+                            }
+                        })
+                    }
+                }
+            },
+        })
+
+        
+      </script>

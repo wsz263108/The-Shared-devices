@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./null.css">
+</head>
+<body>
+    <div class="box">
+        <div class="title"><span>设备使用中</span><br><span>请稍等</span></div>
+        <div class="time" id="times">45:00</div>
+    </div>
+    <script>
+        var times=document.getElementById('times');
+        window.onload=function(){
+            setInterval('num()',1000);
+        }
+        var sec=2700;
+        var m='';
+        var s='';
+        function num(){
+            if(sec>0){
+                sec--;
+                m=Math.floor(sec/60);
+                s=sec%60;
+                m+='';
+                s+='';
+                m=(m.length==1)?'0'+m:m;
+                s=(s.length==1)?'0'+s:s;
+                times.innerHTML=m+':'+s;
+            }
+        }
+    </script>
+</body>
+</html>

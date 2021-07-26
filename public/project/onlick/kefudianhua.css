@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(./timg2.jpg);
+}
+.title{
+    width: 100vw;
+    height: 14vw;
+    line-height: 14vw;
+    text-align: center;
+    font-weight: 900;
+    font-size: 6vw;
+    background-color: rgb(90, 109, 218);
+    color: white;
+}
+.box{
+    text-align: center;
+    margin: 0 auto;
+    width: 80vw;
+    margin-top: 15vw;
+}
+.box1,.box2{
+    margin: 0 auto;
+    width: 60vw;
+    height: 30vw;
+    background-color: rgba(211, 206, 206, 0.4);
+    border-radius: 5vw;
+}
+.box1{
+    margin-bottom: 8vw;
+}
+.box1>:nth-child(1),.box2>:nth-child(1){
+    height: 15vw;
+    line-height: 15vw;
+    font-size: 5vw;
+    margin-bottom: 4vw;
+}
+.box1>:nth-child(2),.box2>:nth-child(2){
+    height: 15vw;
+    font-size: 5vw;
+}

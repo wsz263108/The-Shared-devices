@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钱包充值</title>
+    <link rel="stylesheet" href="./qianbaochongzhi.css">
+    <script src="../../ajax.js"></script>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div class="title">钱包充值</div><!-- 标题 -->
+    <div class="box">
+        <div class="n1">
+            <span>钱包余额：</span>
+            <span id="sp">{{money}}</span>
+        </div>
+        <div class="n2">
+            <div>充值金额</div>
+            <div>
+                <ul>
+                    <li style="width: 100%;"><input style="margin: auto;" v-model="jin" type="text" name="" id=""></li>
+                </ul>
+            </div>
+        </div>
+        <div class="n3"><button @click='but'>充值</button></div>
+    </div>
+    </div>
+
+    <script>
+        ajax({
+            url:"/user/qb",
+            data:{
+                uid:window.sessionStorage.getItem('uid')
+            },
+            dataType:true,
+            proce:function(r){
+                var vm=new Vue({
+                    el:'#box',
+                    data:{
+                        money:r.money,
+                        jin:''
+                    },
+                    methods: {
+                        but:function(){
+                            ajax({
+                                url:'/user/chong',
+                                data:{
+                                    jin:this.jin,
+                                    uid:window.sessionStorage.getItem('uid')
+                                },
+                                dataType:true,
+                                proce:function(r){
+                                    let sp=document.getElementById('sp')
+                                    sp.innerText=r.money
+                                }
+                            })
+                        }
+                    },
+                    })
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>
