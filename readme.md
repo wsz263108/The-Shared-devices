@@ -7,6 +7,9 @@
 # 运行
 node app.js
 
+sb.sql  共享设备数据库
+userjob  用户数据库 
+
 # 使用 
 使用端口为localhost:3000
 
